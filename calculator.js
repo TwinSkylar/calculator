@@ -1,7 +1,6 @@
 let expression = new Array();
 let operand1 = "";
 let operand2 = "";
-let total = "";
 let oper = "";
 
 function add(a, b) { return a + b; }
@@ -12,7 +11,7 @@ function divide(a, b) {
         return "Can't divide by zero.  This calculator is unbreakable.";
     }
     return a / b;
-}
+}cons
 
 function operate(operator, a, b) {
     a = Number(a);
@@ -43,11 +42,11 @@ function getKeyPress(e) {
         operand1 = "";
         operand2 = "";
         oper = "";
-        total = "";
         updateDisplay(0);
         updateAnswer(0);
     }
     else if (operator(value)) {
+        toggleDecimal(true);
         if (oper.length > 0) {
             updateAnswer(operate(oper, operand1, operand2));
         }
@@ -56,6 +55,7 @@ function getKeyPress(e) {
         updateDisplay(`${operand1} ${oper} ${operand2}`)
     }
     else if (value === "=") {
+        toggleDecimal(true);
         if (operand2.length < 1) {
             updateAnswer(operand1);
             oper="";
@@ -79,8 +79,11 @@ function getKeyPress(e) {
             operand2 = expression.join("");
         }
         updateDisplay(`${operand1} ${oper} ${operand2}`)
-
     }
+    if (value === "."){
+        toggleDecimal(false);
+    }
+
 }
 
 function updateDisplay(value) {
@@ -106,6 +109,16 @@ function operator(value) {
             return true;
         default:
             return false;
+    }
+}
+
+function toggleDecimal(toggle){
+    const btn = document.getElementById("decimal");
+    if (toggle){
+        btn.disabled = false;
+    }
+    else{
+        btn.disabled = true;
     }
 }
 /** Adding an event listener for each button */
