@@ -52,10 +52,10 @@ function getKeyPress(e) {
         updateDisplay(`${operand1} ${oper} ${operand2}`)
     }
     else if (value === "=") {
+        operand1 = operate(oper, operand1, operand2);
         updateDisplay(`${operand1} ${oper} ${operand2} = `);
-        updateAnswer(operate(oper, operand1, operand2));
+        updateAnswer(operand1);
         expression = new Array();
-        operand1 = "";
         operand2 = "";
         oper = "";
     }
