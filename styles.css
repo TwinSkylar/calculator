@@ -3,6 +3,12 @@
     src: url('./font/DS-DIGI.TTF') format('truetype');
 }
 
+@font-face {
+    font-family: 'Numbers';
+    src: url('./font/PermanentMarker-Regular.ttf') format('truetype');
+}
+
+
 body{
     display: grid;
     justify-content: center;
@@ -35,10 +41,20 @@ body{
     display: grid;
     padding: 10px;
     grid-template-columns: repeat(4,1fr);   
-    gap: 0.5em;     
+    gap: 0.5em;
 }
+
 
 .btn{
     aspect-ratio: 1;
     background-color: #f2f2f2;
+    font-family: 'Numbers'; 
+    font-size: larger;
+    font-weight:200;
+}
+
+.calc{
+    aspect-ratio:0;
+    grid-column:3/5;
+    grid-row:5;
 }
