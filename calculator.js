@@ -9,7 +9,7 @@ function subtract(a, b) { return a - b; }
 function multiply(a, b) { return a * b; }
 function divide(a, b) {
     if (b === 0) {
-        return "Can't divide by zero.  This calculator is unbreakable";
+        return "Can't divide by zero.  This calculator is unbreakable.";
     }
     return a / b;
 }
@@ -18,7 +18,6 @@ function operate(operator, a, b) {
     a = Number(a);
     b = Number(b);
     result = 0;
-    console.log(`op: ${operator}, a: ${a}, b: ${b}`);
     switch (operator) {
         case "+":
             result = add(a, b);
@@ -57,12 +56,20 @@ function getKeyPress(e) {
         updateDisplay(`${operand1} ${oper} ${operand2}`)
     }
     else if (value === "=") {
-        operand1 = operate(oper, operand1, operand2);
-        updateDisplay(`${operand1} ${oper} ${operand2} = `);
-        updateAnswer(operand1);
-        expression = new Array();
-        operand2 = "";
-        oper = "";
+        if (operand2.length < 1) {
+            updateAnswer(operand1);
+            oper="";
+            updateDisplay(`${operand1} = `);
+        }
+        else {
+            updateDisplay(`${operand1} ${oper} ${operand2} = `);
+            operand1 = operate(oper, operand1, operand2);
+            updateAnswer(operand1);
+            expression = new Array();
+            operand2 = "";
+            oper = "";
+        }
+
     }
     else {
         expression.push(value);
@@ -79,7 +86,7 @@ function getKeyPress(e) {
 function updateDisplay(value) {
     if (!value.
         toString().
-        includes("zero")){
+        includes("zero")) {
         document.querySelector(".work").textContent = value;
     }
 }
