@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Digital';
+    src: url('./font/DS-DIGI.TTF') format('truetype');
+}
+
+body{
+    display: grid;
+    justify-content: center;
+}
+.calcContainer{
+    display:grid;
+    height: 550px;
+    width: 350px;
+    padding: 20px;
+    border: 10px solid black;  
+    gap:1.5rem;
+    background-color: #3366ff;
+}
+
+.display{
+    text-align: right;
+    border:10px solid darkgrey;
+    height: 60px;
+    background-color: lightgray;
+    font-family: 'Digital';
+    font-size: 30px;
+
+}
+
+.answer,
+.work{
+    height:50%;  
+}
+.numberContainer{
+    display: grid;
+    padding: 10px;
+    grid-template-columns: repeat(4,1fr);   
+    gap: 0.5em;     
+}
+
+.btn{
+    aspect-ratio: 1;
+    background-color: #f2f2f2;
+}
