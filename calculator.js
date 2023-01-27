@@ -7,7 +7,12 @@ let oper = "";
 function add(a, b) { return a + b; }
 function subtract(a, b) { return a - b; }
 function multiply(a, b) { return a * b; }
-function divide(a, b) { return a / b; }
+function divide(a, b) {
+    if (b === 0) {
+        return "Can't divide by zero.  This calculator is unbreakable";
+    }
+    return a / b;
+}
 
 function operate(operator, a, b) {
     a = Number(a);
@@ -72,7 +77,11 @@ function getKeyPress(e) {
 }
 
 function updateDisplay(value) {
-    document.querySelector(".work").textContent = value;
+    if (!value.
+        toString().
+        includes("zero")){
+        document.querySelector(".work").textContent = value;
+    }
 }
 
 function updateAnswer(value) {
@@ -84,7 +93,6 @@ function updateAnswer(value) {
 function operator(value) {
     switch (value) {
         case "+":
-
         case "-":
         case "x":
         case "/":
