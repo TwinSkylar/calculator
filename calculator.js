@@ -11,7 +11,7 @@ function divide(a, b) {
         return "Can't divide by zero.  This calculator is unbreakable.";
     }
     return a / b;
-}cons
+}
 
 function operate(operator, a, b) {
     a = Number(a);
@@ -58,7 +58,7 @@ function getKeyPress(e) {
         toggleDecimal(true);
         if (operand2.length < 1) {
             updateAnswer(operand1);
-            oper="";
+            oper = "";
             updateDisplay(`${operand1} = `);
         }
         else {
@@ -72,15 +72,17 @@ function getKeyPress(e) {
 
     }
     else {
-        expression.push(value);
-        if (oper.length < 1) {
-            operand1 = expression.join("");
-        } else {
-            operand2 = expression.join("");
+        if (expression.length < 10) {
+            expression.push(value);
+            if (oper.length < 1) {
+                operand1 = expression.join("");
+            } else {
+                operand2 = expression.join("");
+            }
+            updateDisplay(`${operand1} ${oper} ${operand2}`)
         }
-        updateDisplay(`${operand1} ${oper} ${operand2}`)
     }
-    if (value === "."){
+    if (value === ".") {
         toggleDecimal(false);
     }
 
@@ -112,12 +114,12 @@ function operator(value) {
     }
 }
 
-function toggleDecimal(toggle){
+function toggleDecimal(toggle) {
     const btn = document.getElementById("decimal");
-    if (toggle){
+    if (toggle) {
         btn.disabled = false;
     }
-    else{
+    else {
         btn.disabled = true;
     }
 }
